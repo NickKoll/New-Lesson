@@ -79,8 +79,10 @@ int main()
 	{
 		
 		float quotient;
-			
+		float reminder;
+
 		quotient = number1 / number2;
+
 		
 
 		std::cout << " Quotient is : " << quotient << std::endl;
