@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <cmath>
+
 
 int main()
 {
@@ -62,9 +62,20 @@ int main()
 	else if (opera == '5')
 	{
 
-		result = pow(number1, number2);
-
+		float result2 = number1;
+		int i = 1;
+		while (i < number2)
+		{
+			result2 = result2 * number1;
+			i++;
+			
+			
+		}
+		
+		std::cout << " The result is : " << result2 << std::endl;
+		
 	}
+
 
 	std::cout << " The result is : " << result << std::endl;
 
