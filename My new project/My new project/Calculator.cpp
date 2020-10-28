@@ -77,13 +77,16 @@ int main()
 	}
 	else if (opera == '6')
 	{
-
+		
+		float quotient;
+			
+		quotient = number1 / number2;
 		
 
-	}
-
-
+		std::cout << " Quotient is : " << quotient << std::endl;
 	
+
+	}
 
 
 	system("pause");
