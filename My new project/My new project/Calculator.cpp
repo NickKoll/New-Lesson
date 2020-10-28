@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+#include <math.h>
 
 int main()
 {
@@ -24,6 +24,7 @@ int main()
 	std::cout << " |Press 3. For division        |" << std::endl;
 	std::cout << " |Press 4. For multiplication  |" << std::endl;
 	std::cout << " |Press 5. For power of        |" << std::endl;
+	std::cout << " |Press 6. Forreminder         |" << std::endl;
 	std::cout << " |#############################|" << std::endl;
 
 
@@ -68,12 +69,17 @@ int main()
 		{
 			result2 = result2 * number1;
 			i++;
-			
-			
+
 		}
 		
 		std::cout << " The result is : " << result2 << std::endl;
 		
+	}
+	else if (opera == '6')
+	{
+
+		result = number1 % number2;
+
 	}
 
 
