@@ -40,25 +40,25 @@ int main()
 	if (opera == '1')
 	{
 		result = number1 + number2;
-
+		std::cout << " The result is : " << result << std::endl;
 	}
 	else if (opera == '2')
 	{
 
 		result = number1 - number2;
-
+		std::cout << " The result is : " << result << std::endl;
 	}
 	else if (opera == '3')
 	{
 
 		result = number1 / number2;
-
+		std::cout << " The result is : " << result << std::endl;
 	}
 	else if (opera == '4')
 	{
 
 		result = number1 * number2;
-
+		std::cout << " The result is : " << result << std::endl;
 	}
 	else if (opera == '5')
 	{
@@ -78,12 +78,12 @@ int main()
 	else if (opera == '6')
 	{
 
-		result = number1 % number2;
+		
 
 	}
 
 
-	std::cout << " The result is : " << result << std::endl;
+	
 
 
 	system("pause");
