@@ -2,24 +2,15 @@
 #include <string>
 #include <math.h>
 
+// loop the calculator
 
-
-void Add()
+// passing var to the function (Add example)
+float Add(float number1, float number2)
 {
 
-	float number1 = 0;
-	float number2 = 0;
-	float result = 0.0f;
+	float result = number1 + number2;
 
-
-
-	std::cout << " Please enter number 1 : " << std::endl;
-	std::cin >> number1;
-	std::cout << " Please enter number 2 : " << std::endl;
-	std::cin >> number2;
-	result = number1 + number2;
-	std::cout << " The result is : " << result << std::endl;
-
+	return result;
 }
 
 void Subtraction()
@@ -159,8 +150,18 @@ int main()
 
 	if (opera == '1')
 	{
-		Add();
 
+		float number1 = 0;
+		float number2 = 0;
+
+		std::cout << " Please enter number 1 : " << std::endl;
+		std::cin >> number1;
+		std::cout << " Please enter number 2 : " << std::endl;
+		std::cin >> number2;
+
+		float result = Add(number1, number2);
+
+		std::cout << " The result is : " << result << std::endl;
 	}
 	else if (opera == '2')
 	{
