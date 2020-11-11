@@ -30,8 +30,14 @@ void SellItem(Inventory* weapon, Inventory* seller)
 
 int main()
 {
+	
+	
+	
+	int weapons[5] = { 1, 2, 3, 4, 5 };
+	
 
-	Inventory weapon;
+
+	entory weapon;
 	weapon.value = 100;
 	weapon.weight = 2.5f;
 	weapon.power = 45.0f;
@@ -109,6 +115,28 @@ int main()
 		std::cout << " I'm  selling the weapon" << std::endl;
 
 	}
+
+	
+
+	Inventory* newWeapon1 = new Inventory;
+	newWeapon1->value = 67;
+	newWeapon1->weight = 35;
+	newWeapon1->power = 1000;
+	newWeapon1->age = 87.43f;
+
+	Inventory* newWeapon2 = new Inventory;
+	newWeapon2->value = 56;
+	newWeapon2->weight = 47;
+	newWeapon2->power = 400;
+	newWeapon2->age = 7;
+
+
+	Inventory* newWeapon3 = new Inventory;
+	newWeapon3->value = 16;
+	newWeapon3->weight = 17;
+	newWeapon3->power = 100;
+	newWeapon3->age = 1;
+
 
 
 	system("pause");
