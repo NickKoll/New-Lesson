@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-//10/11/2020
+//11//11//2020//
 struct Inventory
 {
 	int value = 0;
@@ -11,6 +11,23 @@ struct Inventory
 	float offer = 0.0f;
 	std::string name;
 };
+
+void Buy(Inventory& weapon, Inventory& seller)
+{
+	std::cout << "Offere buying price..." << std::endl;
+
+	weapon.age = 4;
+	weapon.offer = 1.87f;
+}
+
+void SellItem(Inventory* weapon, Inventory* seller)
+{
+	std::cout << "Offere selling price..." << std::endl;
+
+	weapon->value = 4.5f;
+	seller->offer = 3.5f;
+}
+
 int main()
 {
 
@@ -32,9 +49,7 @@ int main()
 
 	if (seller.value <= weapon.value - 10)
 	{
-
 		std::cout << " I'm not selling" << std::endl;
-
 
 	}
 
@@ -45,6 +60,55 @@ int main()
 	}
 
 
+	std::cout << "The weapon weight is : " << weapon.weight << " KG " << std::endl;
+	std::cout << "The seller offer : " << seller.weight << " pounds " << std::endl;
+
+
+	if (seller.weight <= weapon.weight - 20)
+	{
+		std::cout << " I'm not selling" << std::endl;
+
+	}
+
+	else if (seller.weight > weapon.weight - 20)
+	{
+		std::cout << " I'm  selling the weapon" << std::endl;
+
+	}
+
+
+
+	std::cout << "The weapon power is : " << weapon.power << " NM " << std::endl;
+	std::cout << "The seller offer : " << seller.power << " pounds " << std::endl;
+
+
+	if (seller.power <= weapon.power - 15)
+	{
+		std::cout << " I'm not selling" << std::endl;
+
+	}
+
+	else if (seller.power > weapon.power - 15)
+	{
+		std::cout << " I'm  selling the weapon" << std::endl;
+
+	}
+
+	std::cout << "The weapon age is : " << weapon.age << " years " << std::endl;
+	std::cout << "The seller offer : " << seller.age << " pounds " << std::endl;
+
+
+	if (seller.age <= weapon.age - 2)
+	{
+		std::cout << " I'm not selling" << std::endl;
+
+	}
+
+	else if (seller.age > weapon.age - 2)
+	{
+		std::cout << " I'm  selling the weapon" << std::endl;
+
+	}
 
 
 	system("pause");
