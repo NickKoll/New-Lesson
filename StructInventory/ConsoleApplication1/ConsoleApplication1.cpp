@@ -44,7 +44,7 @@ int main()
 
 
 
-	entory weapon;
+	Inventory weapon;
 	weapon.value = 100;
 	weapon.weight = 2.5f;
 	weapon.power = 45.0f;
