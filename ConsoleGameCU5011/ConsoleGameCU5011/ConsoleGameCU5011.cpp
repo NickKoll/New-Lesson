@@ -1,6 +1,7 @@
 #include <iostream>
 #include <windows.h>
 
+
 void Menu()
 {
     int choice;
@@ -10,9 +11,9 @@ void Menu()
     std::cout << "##################################" << std::endl;
     std::cout << "             MENU                 " << std::endl;
     std::cout << "##################################" << std::endl;
-    std::cout << "1.      GO TO NEXT GAME           " << std::endl;
-    std::cout << "2.     STAY ON THAT GAME          " << std::endl;
-    std::cout << "3.  RETURN TO THE PREVIOUS GAME   " << std::endl;
+    std::cout << "1.       GO TO NEXT CASINO        " << std::endl;
+    std::cout << "2.      STAY IN THAT CASINO       " << std::endl;
+    std::cout << "3. RETURN TO THE PREVIOUS CASINO  " << std::endl;
     std::cout << "4.           EXIT                 " << std::endl;
     std::cout << "##################################" << std::endl;
 
@@ -20,7 +21,22 @@ void Menu()
 
     if (choice == 1)
     {
-        std::cout << "1" << std::endl;
+        int luck = rand() % 100 + 1;
+       
+        if (luck >= 50)
+        {
+            currentCasino = casinoName[rand() % 2];
+
+            std::cout << " Lets test your luck !!! " << std::endl;
+            std::cout << " You are in : " << currentCasino << " casino " << std::endl;
+
+            Casino();
+        }
+        else 
+        {
+            std::cout << " There is no fun games for you here !!! " << std::endl;
+            Menu();
+        }
     }
     else if (choice == 2)
     {
@@ -42,8 +58,36 @@ void Menu()
 
 
 }
+
+void Info()
+{
+  
+    std::cout << "Name : " << name << std::endl;
+    std::cout << "Location : " << yourLocation << std::endl;
+
+}
+
+void Casino()
+{
+
+
+}
+
+std::string name = " ";
+std::string yourLocation = " ";
+int funds = 0;
+int maxFunds = 0;
+int work = 0;
+int casinoFunds = 0;
+int casinoRoom = 0;
+std::string casinoName[] = { "Royal", "Vega", "Monaco" };
+std::string currentCasino = " ";
+
 int main()
 {
+   
+
+
     // game intro
 
     
@@ -86,8 +130,7 @@ int main()
 
 
     // character input 
-    std::string name = " ";
-    std::string yourLocation = " ";
+ 
 
     std::cout << "Please enter your name : ";
     std::cin >> name;
