@@ -1,148 +1,204 @@
 #include <iostream>
-#include <windows.h>
+
+//rooms in the casino
+enum class CasinoRoom {ROOM_1, ROOM_2, ROOM_3};
+//diferent casinos for the player to choose
+enum class CasinoBuilding {ROYAL, VEGAS, MONACO};
+//Global variables================================
+std::string name;
+
+//current player funds and maximum player funds 
+int playerFunds = 0;
+int playerFundsMax = 0;
+
+//money earn from work and stored in the bank
+int bank = 150;
+
+//money which can be earn from the casino
+int casinoFunds = 0;
+int choice;
+//levels in the specific casino
+CasinoBuilding currentCasino = CasinoBuilding::ROYAL;
+CasinoBuilding previousCasino = CasinoBuilding::ROYAL;
+CasinoRoom casinoRoom = CasinoRoom::ROOM_1;
 
 
-void Menu()
+//================================================
+//player information after every casino
+int Menu()
 {
+    
     int choice;
 
-
-
+    system("cls");
+    
+    //Main menu
     std::cout << "##################################" << std::endl;
     std::cout << "             MENU                 " << std::endl;
     std::cout << "##################################" << std::endl;
     std::cout << "1.       GO TO NEXT CASINO        " << std::endl;
     std::cout << "2.      STAY IN THAT CASINO       " << std::endl;
     std::cout << "3. RETURN TO THE PREVIOUS CASINO  " << std::endl;
-    std::cout << "4.           EXIT                 " << std::endl;
+    std::cout << "4.             EXIT               " << std::endl;
     std::cout << "##################################" << std::endl;
 
     std::cin >> choice;
-
-    if (choice == 1)
-    {
-        int luck = rand() % 100 + 1;
-       
-        if (luck >= 50)
-        {
-            currentCasino = casinoName[rand() % 2];
-
-            std::cout << " Lets test your luck !!! " << std::endl;
-            std::cout << " You are in : " << currentCasino << " casino " << std::endl;
-
-            Casino();
-        }
-        else 
-        {
-            std::cout << " There is no fun games for you here !!! " << std::endl;
-            Menu();
-        }
-    }
-    else if (choice == 2)
-    {
-        std::cout << "2." << std::endl;
-    }
-    else if (choice == 3)
-    {
-        std::cout << "3." << std::endl;
-    }
-    else if (choice == 4)
-    {
-        exit;
-    }
-    else
-    {
-        std::cout << "Invalid number . Please enter 1, 2, 3 or 4." << std::endl;
-        Menu();
-    }
-
+    return choice;
 
 }
-
 void Info()
 {
-  
-    std::cout << "Name : " << name << std::endl;
-    std::cout << "Location : " << yourLocation << std::endl;
-
-}
-
-void Casino()
-{
 
 
 }
+//================================================
+    void Casino()
+    {
+        std::cout << " Welcome to the casino " << std::endl;
+        
+    }
 
-std::string name = " ";
-std::string yourLocation = " ";
-int funds = 0;
-int maxFunds = 0;
-int work = 0;
-int casinoFunds = 0;
-int casinoRoom = 0;
-std::string casinoName[] = { "Royal", "Vega", "Monaco" };
-std::string currentCasino = " ";
 
 int main()
 {
-   
 
 
-    // game intro
-
-    
-   
-    std::cout << " /\  _\                                     "<< std::endl;             
-    std::cout << " \ \ \ _   __      ___     ___   __  __     "<< std::endl;          
-    std::cout << "  \ \  _\/'__`\  /' _ `\  /'___\/\ \/\ \    "<< std::endl;         
-    std::cout << "   \ \ \/\ \L\.\_/\ \/\ \/\ \__   \ \_\ \   "<< std::endl;        
-    std::cout << "    \ \_\ \__/.\_\ \_\ \_\ \____\\/`____ \  "<< std::endl;       
-    std::cout << "     \/_/\/__/\/_/\/_/\/_/\/____/ `/___/> \ "<< std::endl;      
-    std::cout << "                                     /\___/ "<< std::endl;      
-    std::cout << "                                     \/__/  "<< std::endl;      
-    
-    Sleep(400);
-
-    
-    std::cout << "                                 "<<" /\  _\                             : "               << std::endl;  
-    std::cout << "                                 "<<" \ \ \ _   __      ___     ___   __  __: "            << std::endl;  
-    std::cout << "                                 "<<"  \ \  _\/'__`\  /' _ `\  /'___\/\ \/\ \: "           << std::endl;  
-    std::cout << "                                 "<<"   \ \ \/\ \L\.\_/\ \/\ \/\ \__   \ \_\ \: "          << std::endl;  
-    std::cout << "                                 "<<"    \ \_\ \__/.\_\ \_\ \_\ \____\\/`____ \: "         << std::endl;  
-    std::cout << "                                 "<<"     \/_/\/__/\/_/\/_/\/_/\/____/ `/___/> \: "        << std::endl;  
-    std::cout << "                                 "<<"                                     /\___/: "        << std::endl;  
-    std::cout << "                                 "<<"                                     \/__/ : "        << std::endl;  
-    
-    Sleep(400);
-
-                                     
-    std::cout << "                                                                    " << " /\  _\                                     : "   << std::endl;  
-    std::cout << "                                                                    " << " \ \ \ _   __      ___     ___   __  __     : "   << std::endl;  
-    std::cout << "                                                                    " << "  \ \  _\/'__`\  /' _ `\  /'___\/\ \/\ \    : "   << std::endl;  
-    std::cout << "                                                                    " << "   \ \ \/\ \L\.\_/\ \/\ \/\ \__   \ \_\ \   : "   << std::endl;  
-    std::cout << "                                                                    " << "    \ \_\ \__/.\_\ \_\ \_\ \____\\/`____ \  : "   << std::endl;  
-    std::cout << "                                                                    " << "     \/_/\/__/\/_/\/_/\/_/\/____/ `/___/> \ : "   << std::endl;  
-    std::cout << "                                                                    " << "                                     /\___/ : "   << std::endl;  
-    std::cout << "                                                                    " << "                                     \/__/  : "   << std::endl;  
-
-    Sleep(400);
-
-
-
-    // character input 
- 
+    //================================================================
 
     std::cout << "Please enter your name : ";
     std::cin >> name;
-    std::cout << "Please enter the name of your city : ";
-    std::cin >> yourLocation;
-    std::cout <<"Hi " <<name <<" from " << yourLocation << std::endl;
+
+    std::cout << "Hi " << name << std::endl;
     std::cout << ". Your game will start now ! " << std::endl;
     std::cout << " Please choice number from the menu :" << std::endl;
 
 
-    Menu();
-   
-          
+    do
+    {
+        int choice = Menu();
+
+        if (choice == 1)
+        {
+           
+            //randomly choosing if there is a free space in the casino
+            int luck = rand() % 100 + 1;
+
+            if (luck >= 50)
+            {
+                //storing the casino first
+                previousCasino = currentCasino;
+                //randomly choose avaleble space in the casino
+                currentCasino = (CasinoBuilding)(rand() % 3);
+
+
+                std::cout << " Lets test your luck !!! " << std::endl;
+                std::cout << " You are in the  " << std::endl;
+                // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
+
+                switch (currentCasino)
+                {
+                    case CasinoBuilding::ROYAL:
+                    {
+                        std::cout << " Royal Building " << std::endl;
+                        break;
+                    }
+
+                    case CasinoBuilding::VEGAS:
+                    {
+                        std::cout << " Vegas Building " << std::endl;
+                        break;
+                    }
+
+                    case CasinoBuilding::MONACO:
+                    {
+                        std::cout << " Monaco Building " << std::endl;
+                        break;
+
+                    }
+                }
+
+                Casino();
+                choice = 0;
+                
+            }
+            else
+            {
+                std::cout << " There is no fun games for you here !!! " << std::endl;
+                system("pause");
+                choice = 0;
+            }
+        }
+        else if (choice == 2)
+        {
+            std::cout << " Lets test your luck !!! " << std::endl;
+            std::cout << " You remain in the " << std::endl;
+            // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
+
+            switch (currentCasino)
+            {
+                case CasinoBuilding::ROYAL:
+                {
+                    std::cout << " Royal Building " << std::endl;
+                    break;
+                }
+
+                case CasinoBuilding::VEGAS:
+                {
+                    std::cout << " Vegas Building " << std::endl;
+                    break;
+                }
+
+                case CasinoBuilding::MONACO:
+                {
+                    std::cout << " Monaco Building " << std::endl;
+                    break;
+
+                }
+            }
+            Casino();
+            choice = 0;
+        }
+        else if (choice == 3)
+        {
+            std::cout << " Lets test your luck !!! " << std::endl;
+            std::cout << " You go back to  " << std::endl;
+            // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
+
+            switch (previousCasino)
+            {
+                case CasinoBuilding::ROYAL:
+                {
+                    std::cout << " Royal Building " << std::endl;
+                    break;
+                }
+
+                case CasinoBuilding::VEGAS:
+                {
+                    std::cout << " Vegas Building " << std::endl;
+                    break;
+                }
+
+                case CasinoBuilding::MONACO:
+                {
+                    std::cout << " Monaco Building " << std::endl;
+                    break;
+
+                }
+                Casino();
+                choice = 0;
+                currentCasino = previousCasino;
+            }
+        }
+
+        else if (choice == 4)
+        {
+            std::cout << " Thank you for playing . Good buy ! " << std::endl;
+        }
+
+
+
+    } while (choice != 4);
+
+    system("pause");
     return 0;
 }
