@@ -1,18 +1,22 @@
 #include <iostream>
+//================================================
 //menu choice
 enum  MenuCoice {NEXT_CASINO = 1, CURENT_CASINO, PREVIOUS_CASINO, EXIT};
 //rooms in the casino
 enum class CasinoRoom {ROOM_1, ROOM_2, ROOM_3};
 //diferent casinos for the player to choose
 enum class CasinoBuilding {ROYAL, VEGAS, MONACO};
-
-
-
+//================================================
+//function declaration
+int Menu();
+std::string PlayerInfo();
+void DisplayCasinoName(CasinoBuilding casino);
+void Casino(CasinoBuilding casino); 
 //================================================
 //player information after every casino
 int Menu()
 {
-    
+
     int choice;
 
     system("cls");
@@ -36,23 +40,26 @@ int Menu()
     return choice;
 
 }
-void Info()
-{
-
-
-}
 //================================================
-void Casino()
+//player information
+std::string PlayerInfo()
 {
-   std::cout << " Welcome to the casino " << std::endl;
-  
+    std::string name;
+    std::cout << "Please enter your name : ";
+    std::cin >> name;
+
+    std::cout << "Hi " << name << std::endl;
+    std::cout << ". Your game will start now ! " << std::endl;
+    std::cout << " Please choice number from the menu :" << std::endl;
+    return name;
 }
+
 //================================================
 //display casino name
-void DisplayCasinoName(CasinoBuilding currentCasino)
+void DisplayCasinoName(CasinoBuilding casino)
 {
 
-    switch (currentCasino)
+    switch (casino)
     {
         case CasinoBuilding::ROYAL:
         {
@@ -76,6 +83,12 @@ void DisplayCasinoName(CasinoBuilding currentCasino)
     }
 }
 
+void Casino(CasinoBuilding casino)
+{
+   std::cout << " Welcome to the casino " << std::endl;
+   DisplayCasinoName(casino);
+   system("pause");
+}
 
 int main()
 {
@@ -99,12 +112,7 @@ int main()
 
     //================================================================
 
-    std::cout << "Please enter your name : ";
-    std::cin >> name;
-
-    std::cout << "Hi " << name << std::endl;
-    std::cout << ". Your game will start now ! " << std::endl;
-    std::cout << " Please choice number from the menu :" << std::endl;
+    name = PlayerInfo();
 
     //get choice from the menu
     
@@ -126,20 +134,20 @@ int main()
                 //randomly choose avaleble space in the casino
                 currentCasino = (CasinoBuilding)(rand() % 3);
 
-
+                std::cout << " Hi " << name << std::endl;
                 std::cout << " Lets test your luck !!! " << std::endl;
                 std::cout << " You are in the  " << std::endl;
                 // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
 
-                DisplayCasinoName(currentCasino);
-                break;
-                Casino();
+              
+                Casino(currentCasino);
                 choice = 0;
                
                 
             }
             else
             {
+                std::cout << " Hi " << name << std::endl;
                 std::cout << " There is no fun games for you here !!! " << std::endl;
                 system("pause");
                 choice = 0;
@@ -151,9 +159,9 @@ int main()
             std::cout << " You remain in the " << std::endl;
             // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
 
-            DisplayCasinoName(currentCasino);
-            break;
-            Casino();
+            
+           
+            Casino(currentCasino);
             choice = 0;
         }
         else if (choice == MenuCoice::PREVIOUS_CASINO)
@@ -162,9 +170,8 @@ int main()
             std::cout << " You go back to  " << std::endl;
             // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
 
-            DisplayCasinoName(currentCasino);
-            break;
-                Casino();
+           
+                Casino(previousCasino);
                 choice = 0;
                 currentCasino = previousCasino;
             
