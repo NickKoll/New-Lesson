@@ -113,18 +113,20 @@ void Casino(CasinoBuilding casino)
    std::cout << " Welcome to casino " << std::endl;
    DisplayCasinoName(casino);
 
+   int menuChoice;
    int playerBetAmount;
-   int menuChoice = BetMenu();
-
+  
 
    do
    {
+       menuChoice = BetMenu();
        
        if (menuChoice == BetMenu::BET_ALL)
        {
            std::cout << " You just bet all your money  " << std::endl;
            std::cout << " Good luck " << std::endl;
            system("pause");
+            
        }
        else if (menuChoice == BetMenu::BET_SOME)
        {
@@ -133,28 +135,21 @@ void Casino(CasinoBuilding casino)
            std::cout << " You just bet : " << playerBetAmount << std::endl;
            std::cout << " Good luck " << std::endl;
            system("pause");
+           
+          
        }
+       else if (menuChoice == BetMenu::GO)
+       {
+           std::cout << " You are back to the main menu " << std::endl;
+
+           
+       }
+       
    } while (menuChoice != BetMenu::GO);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+ 
    system("pause");
-
+   
+  
 }
 
 int main()
