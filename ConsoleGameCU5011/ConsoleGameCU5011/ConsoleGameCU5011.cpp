@@ -1,5 +1,7 @@
 #include <iostream>
 //================================================
+//Beting Menu Choice
+enum BetMenu {BET_ALL = 1, BET_SOME, GO};
 //menu choice
 enum  MenuCoice {NEXT_CASINO = 1, CURENT_CASINO, PREVIOUS_CASINO, EXIT};
 //rooms in the casino
@@ -83,11 +85,76 @@ void DisplayCasinoName(CasinoBuilding casino)
     }
 }
 
+int BetMenu()
+{
+
+   system("cls");
+   int menuChoice;
+
+       std::cout << "##################################" << std::endl;
+       std::cout << "             MENU                 " << std::endl;
+       std::cout << "##################################" << std::endl;
+       std::cout << "1.       BET ALL YOUR MONEY       " << std::endl;
+       std::cout << "2.      BET MUCH AS YOU WANT      " << std::endl;
+       std::cout << "3.        LEAVE THE CASINO        " << std::endl;
+       std::cout << "##################################" << std::endl;
+
+       do
+       {
+           std::cout << " Please make your choice . " << std::endl;
+           std::cin >> menuChoice;
+       } while (menuChoice > BetMenu::GO || menuChoice < BetMenu::BET_ALL);
+
+       return menuChoice;
+}
+
 void Casino(CasinoBuilding casino)
 {
-   std::cout << " Welcome to the casino " << std::endl;
+   std::cout << " Welcome to casino " << std::endl;
    DisplayCasinoName(casino);
+
+   int playerBetAmount;
+   int menuChoice = BetMenu();
+
+
+   do
+   {
+       
+       if (menuChoice == BetMenu::BET_ALL)
+       {
+           std::cout << " You just bet all your money  " << std::endl;
+           std::cout << " Good luck " << std::endl;
+           system("pause");
+       }
+       else if (menuChoice == BetMenu::BET_SOME)
+       {
+           std::cout << " Please enter the amount you want to bet . " <<  std::endl;
+           std::cin >> playerBetAmount;
+           std::cout << " You just bet : " << playerBetAmount << std::endl;
+           std::cout << " Good luck " << std::endl;
+           system("pause");
+       }
+   } while (menuChoice != BetMenu::GO);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
    system("pause");
+
 }
 
 int main()
@@ -156,13 +223,14 @@ int main()
         else if (choice == MenuCoice::CURENT_CASINO)
         {
             std::cout << " Lets test your luck !!! " << std::endl;
-            std::cout << " You remain in the " << MenuCoice::CURENT_CASINO << std::endl;
+            std::cout << " You choose " << MenuCoice::CURENT_CASINO << std::endl;
             // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
 
             
            
             Casino(currentCasino);
             choice = 0;
+            
         }
         else if (choice == MenuCoice::PREVIOUS_CASINO)
         {
