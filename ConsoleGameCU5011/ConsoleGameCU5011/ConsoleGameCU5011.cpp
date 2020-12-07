@@ -156,7 +156,7 @@ int main()
         else if (choice == MenuCoice::CURENT_CASINO)
         {
             std::cout << " Lets test your luck !!! " << std::endl;
-            std::cout << " You remain in the " << std::endl;
+            std::cout << " You remain in the " << MenuCoice::CURENT_CASINO << std::endl;
             // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
 
             
