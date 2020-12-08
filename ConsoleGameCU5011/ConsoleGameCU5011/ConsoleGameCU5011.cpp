@@ -113,7 +113,9 @@ void Casino(CasinoBuilding casino)
    std::cout << " Welcome to casino " << std::endl;
    DisplayCasinoName(casino);
 
+   //BetMenu choice
    int menuChoice;
+   //The amount of money which the player want to bet
    int playerBetAmount;
   
 
@@ -142,14 +144,12 @@ void Casino(CasinoBuilding casino)
        {
            std::cout << " You are back to the main menu " << std::endl;
 
-           
        }
        
    } while (menuChoice != BetMenu::GO);
  
    system("pause");
    
-  
 }
 
 int main()
