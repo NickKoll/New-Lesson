@@ -15,7 +15,7 @@ Player::Player()
 
 Player::~Player()
 {
-	std::cout << " Player desgrohed" << std::endl;
+	std::cout << " Player destrohed" << std::endl;
 }
 
 void Player::Bet()
@@ -44,6 +44,9 @@ void Player::HUD()
 	std::cout << "Name: " << m_name << std::endl;
 	std::cout << "Wallet: " << m_funds << std::endl;
 	std::cout << "Max Funds: " << m_fundsMax << std::endl;
+	std::cout << "#===============================#" << std::endl;
+  	m_currentCasino->DisplayName();
+	std::cout << "#===============================#" << std::endl;
 }
 
 float Player::GetFunds()
