@@ -1,19 +1,20 @@
 #include <iostream>
+#include "Casino.h"
+#include "Player.h"
 //================================================
 //Beting Menu Choice
 enum BetMenu {BET_ALL = 1, BET_SOME, GO};
+
 //menu choice
 enum  MenuCoice {NEXT_CASINO = 1, CURENT_CASINO, PREVIOUS_CASINO, EXIT};
-//rooms in the casino
-enum class CasinoRoom {ROOM_1, ROOM_2, ROOM_3};
-//diferent casinos for the player to choose
-enum class CasinoBuilding {ROYAL, VEGAS, MONACO};
+
+//Casino names
+enum class Name { ROYAL, VEGAS, MONACO };
+
 //================================================
 //function declaration
 int Menu();
-std::string PlayerInfo();
-void DisplayCasinoName(CasinoBuilding casino);
-void Casino(CasinoBuilding casino); 
+void HUD(Player& player);
 //================================================
 //player information after every casino
 int Menu()
@@ -21,7 +22,7 @@ int Menu()
 
     int choice;
 
-    system("cls");
+    
     
     //Main menu
     std::cout << "##################################" << std::endl;
@@ -32,10 +33,10 @@ int Menu()
     std::cout << "3. RETURN TO THE PREVIOUS CASINO  " << std::endl;
     std::cout << "4.             EXIT               " << std::endl;
     std::cout << "##################################" << std::endl;
-
+     
     do
     {
-        std::cout << " Please make your choice . " << std::endl;
+        std::cout << "Please make your choice." << std::endl;
         std::cin >> choice;
     } while (choice > MenuCoice::EXIT || choice < MenuCoice::NEXT_CASINO);
 
@@ -44,46 +45,36 @@ int Menu()
 }
 //================================================
 //player information
-std::string PlayerInfo()
+void HUD(Player& player)
 {
     std::string name;
-    std::cout << "Please enter your name : ";
-    std::cin >> name;
+    std::cout << "Please enter your name:";
+    std::getline (std::cin, name);
+    player.SetName(name);
 
+    float funds;
     std::cout << "Hi " << name << std::endl;
-    std::cout << ". Your game will start now ! " << std::endl;
-    std::cout << " Please choice number from the menu :" << std::endl;
-    return name;
-}
 
-//================================================
-//display casino name
-void DisplayCasinoName(CasinoBuilding casino)
-{
 
-    switch (casino)
+    do
     {
-        case CasinoBuilding::ROYAL:
-        {
-            std::cout << " Royal Building " << std::endl;
-            break;
-        }
+        std::cout << ". How much money would you like to add to your wallet? " << std::endl;
+        std::cout << "Please note , your available balance is between 0 and 1000." << std::endl;
+        std::cin >> funds;
 
-        case CasinoBuilding::VEGAS:
-        {
-            std::cout << " Vegas Building " << std::endl;
-            break;
-        }
+    } while (funds < 0 || funds > player.GetFundsMax());
 
-        case CasinoBuilding::MONACO:
-        {
-            std::cout << " Monaco Building " << std::endl;
-            break;
 
-        }
-      
-    }
+    
+    player.SetFunds(funds);
+
+    std::cout << name <<". your game will start now!" << std::endl;
+
+    system("pause");
+ 
+   
 }
+//===================================================================================
 
 int BetMenu()
 {
@@ -101,86 +92,101 @@ int BetMenu()
 
        do
        {
-           std::cout << " Please make your choice . " << std::endl;
+           std::cout << " Please make your choice." << std::endl;
            std::cin >> menuChoice;
        } while (menuChoice > BetMenu::GO || menuChoice < BetMenu::BET_ALL);
 
        return menuChoice;
 }
 
-void Casino(CasinoBuilding casino)
-{
-   std::cout << " Welcome to casino " << std::endl;
-   DisplayCasinoName(casino);
-
-   //BetMenu choice
-   int menuChoice;
-   //The amount of money which the player want to bet
-   int playerBetAmount;
-  
-
-   do
-   {
-       menuChoice = BetMenu();
-       
-       if (menuChoice == BetMenu::BET_ALL)
-       {
-           std::cout << " You just bet all your money  " << std::endl;
-           std::cout << " Good luck " << std::endl;
-           system("pause");
-            
-       }
-       else if (menuChoice == BetMenu::BET_SOME)
-       {
-           std::cout << " Please enter the amount you want to bet . " <<  std::endl;
-           std::cin >> playerBetAmount;
-           std::cout << " You just bet : " << playerBetAmount << std::endl;
-           std::cout << " Good luck " << std::endl;
-           system("pause");
-           
-          
-       }
-       else if (menuChoice == BetMenu::GO)
-       {
-           std::cout << " You are back to the main menu " << std::endl;
-
-       }
-       
-   } while (menuChoice != BetMenu::GO);
- 
-   system("pause");
-   
-}
+//void Casino(CasinoName, casino)
+//{
+//    
+//   DisplayCasinoName(casino);
+//
+//
+//
+//   //BetMenu choice
+//   int menuChoice;
+//   //The amount of money which the player want to bet
+//   int playerBetAmount;
+//  
+//
+//   do
+//   {
+//       menuChoice = BetMenu();
+//       
+//       if (menuChoice == BetMenu::BET_ALL)
+//       {
+//           std::cout << " You just bet all your money" << std::endl;
+//           std::cout << "Good luck" << std::endl;
+//           system("pause");
+//            
+//       }
+//       else if (menuChoice == BetMenu::BET_SOME)
+//       {
+//           std::cout << "Please enter the amount you want to bet." <<  std::endl;
+//           std::cin >> playerBetAmount;
+//           std::cout << "You just bet: " << playerBetAmount << std::endl;
+//           std::cout << "Good luck" << std::endl;
+//           system("pause");
+//           
+//          
+//       }
+//       else if (menuChoice == BetMenu::GO)
+//       {
+//           std::cout << " You are back to the main menu" << std::endl;
+//
+//       }
+//       
+//   } while (menuChoice != BetMenu::GO);
+// 
+//   system("pause");
+//   
+//}
 
 int main()
 {
-    //Global variables================================
-    std::string name;
+    Player player;
 
-    //current player funds and maximum player funds 
-    int playerFunds = 0;
-    int playerFundsMax = 0;
+    Casino royal;
+    Casino monaco;
+    Casino vegas;
+
+    royal.SetName("ROYAL");
+    royal.SetFunds(250.0f);
+
+    vegas.SetName("VEGAS");
+    vegas.SetFunds(350.0f);
+
+    monaco.SetName("MONACO");
+    monaco.SetFunds(400.0f);
+
+    player.SetCurrentCasino(&royal);
 
     //money earn from work and stored in the bank
     int bank = 150;
 
     //money which can be earn from the casino
-    int casinoFunds = 0;
+    
     int choice;
-    //levels in the specific casino
-    CasinoBuilding currentCasino = CasinoBuilding::ROYAL;
-    CasinoBuilding previousCasino = CasinoBuilding::ROYAL;
-    CasinoRoom casinoRoom = CasinoRoom::ROOM_1;
+
+    //levels in th e specific casino
+   
+    //CasinoRoom casinoRoom = CasinoRoom::ROOM_1;
 
     //================================================================
 
-    name = PlayerInfo();
+    HUD(player);
 
+
+    std::cout << " Please choice number from the menu:" << std::endl;
     //get choice from the menu
     
 
     do
     {
+        player.HUD();
         choice = Menu();
 
         if (choice == MenuCoice::NEXT_CASINO)
@@ -191,58 +197,74 @@ int main()
 
             if (luck >= 50)
             {
-                //storing the casino first
-                previousCasino = currentCasino;
-                //randomly choose avaleble space in the casino
-                currentCasino = (CasinoBuilding)(rand() % 3);
+                int randomCasino = (rand() % 3);
 
-                std::cout << " Hi " << name << std::endl;
-                std::cout << " Lets test your luck !!! " << std::endl;
-                std::cout << " You are in the  " << std::endl;
-                // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
+                switch (randomCasino)
+                {
+                    case 0:
+                    {
+                        player.SetCurrentCasino(&royal);
+                        break;
+                    }
+                    case 1:
+                    {
+                        player.SetCurrentCasino(&vegas);
+                        break;
+                    }   
+                    case 2:
+                    {
+                        player.SetCurrentCasino(&monaco);
+                        break;
+                    }
+                        
+                    
+                }
+                  
 
-              
-                Casino(currentCasino);
+
+
+
+                std::cout << " Hi " << player.GetName() << std::endl;
+                std::cout << " Lets test your luck!!! " << std::endl;
+                player.GetCurrentCasino()->DisplayName();
+
+                system("pause" );
                 choice = 0;
                
                 
             }
             else
             {
-                std::cout << " Hi " << name << std::endl;
-                std::cout << " There is no fun games for you here !!! " << std::endl;
+                std::cout << " Hi " << player.GetName() << std::endl;
+                std::cout << " There is no fun games for you here!!! " << std::endl;
                 system("pause");
                 choice = 0;
             }
         }
         else if (choice == MenuCoice::CURENT_CASINO)
         {
-            std::cout << " Lets test your luck !!! " << std::endl;
-            std::cout << " You choose " << MenuCoice::CURENT_CASINO << std::endl;
-            // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
-
-            
-           
-            Casino(currentCasino);
-            choice = 0;
-            
+            std::cout << " thank you for staying with us !!!" << std::endl;
+     
+            choice = 0;            
         }
         else if (choice == MenuCoice::PREVIOUS_CASINO)
         {
-            std::cout << " Lets test your luck !!! " << std::endl;
-            std::cout << " You go back to  " << std::endl;
-            // std::cout << " You are in : " << currentCasino << " casino " << std::endl;
+            std::cout << " Lets test your luck!!! " << std::endl;
+            std::cout << " You go back to the previous casino  " << std::endl;
 
-           
-                Casino(previousCasino);
-                choice = 0;
-                currentCasino = previousCasino;
-            
+            if (player.GetPreviousCasino() != nullptr)
+            {
+                player.SetCurrentCasino(player.GetPreviousCasino());
+                player.GetCurrentCasino()->DisplayName();       
+
+            }
+
+            choice = 0;
         }
 
         else if (choice == MenuCoice::EXIT)
         {
-            std::cout << " Thank you for playing . Good buy ! " << std::endl;
+            std::cout << "Thank you for playing. Good bye!" << std::endl;
         }
 
 
