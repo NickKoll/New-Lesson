@@ -39,7 +39,7 @@ int Menu()
         std::cout << "Please make your choice." << std::endl;
         std::cin >> choice;
     } while (choice > MenuCoice::EXIT || choice < MenuCoice::NEXT_CASINO);
-
+    system("pause");
     return choice;
 
 }
@@ -219,16 +219,11 @@ int main()
                         
                     
                 }
-                  
-
-
-
 
                 std::cout << " Hi " << player.GetName() << std::endl;
                 std::cout << " Lets test your luck!!! " << std::endl;
                 player.GetCurrentCasino()->DisplayName();
-
-                system("pause" );
+                system("pause");
                 choice = 0;
                
                 
@@ -244,7 +239,7 @@ int main()
         else if (choice == MenuCoice::CURENT_CASINO)
         {
             std::cout << " thank you for staying with us !!!" << std::endl;
-     
+            system("pause");
             choice = 0;            
         }
         else if (choice == MenuCoice::PREVIOUS_CASINO)
@@ -256,7 +251,7 @@ int main()
             {
                 player.SetCurrentCasino(player.GetPreviousCasino());
                 player.GetCurrentCasino()->DisplayName();       
-
+                system("pause");
             }
 
             choice = 0;
@@ -265,6 +260,7 @@ int main()
         else if (choice == MenuCoice::EXIT)
         {
             std::cout << "Thank you for playing. Good bye!" << std::endl;
+           
         }
 
 
